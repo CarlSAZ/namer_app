@@ -38,22 +38,44 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
+    var pair = appState.current;
 
     return Scaffold(
       body: Column(
         children: [
           Text('Hello World! Suggested name for new world:'),
-          Text(appState.current.asLowerCase),
+          WorldCard(pair: pair),
           
           ElevatedButton(
             onPressed: () {
-              print('button pressed!');
               appState.getNext();
             },
             child: Text('Next'),
           ),
 
         ],
+      ),
+    );
+  }
+}
+
+class WorldCard extends StatelessWidget {
+  const WorldCard({
+    super.key,
+    required this.pair,
+  });
+
+  final WordPair pair;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Card(
+      color: theme.colorScheme.primary,
+      child: Padding(
+        padding: const EdgeInsets.all(30),
+        child: Text(pair.asLowerCase),
       ),
     );
   }
