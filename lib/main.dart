@@ -45,9 +45,10 @@ class MyHomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Hello World! Suggested name for new world:'),
+            Text('Hello World!'),
+            Text('Suggested name for new world:'),
             WorldCard(pair: pair),
-            
+            SizedBox(height: 20,),
             ElevatedButton(
               onPressed: () {
                 appState.getNext();
